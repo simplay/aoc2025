@@ -13,7 +13,7 @@ def filter1(intervals):
 
 
 def filter2(intervals):
-    def get_substring(ivalue):
+    def get_substrings(ivalue):
         value = str(ivalue)
 
         substrings = []
@@ -27,7 +27,7 @@ def filter2(intervals):
     invalid_ids = []
     for (a, b) in intervals:
         for value in range(a, b + 1):
-            substrings = get_substring(value)
+            substrings = get_substrings(value)
             for idx, substring in enumerate(substrings):
                 factor = int(len(str(value)) / (idx + 1))
                 extended_substring = substring * factor
@@ -44,8 +44,8 @@ def main():
         intervals = [interval.split("-") for interval in file.readline().strip().split(",")]
         intervals = [(int(a), int(b)) for (a, b) in intervals]
 
-        print("2a: ", sum(filter1(intervals)))
-        print("2b: ", sum(filter2(intervals)))
+        print("2a = ", sum(filter1(intervals)))
+        print("2b = ", sum(filter2(intervals)))
 
 
 if __name__ == '__main__':
